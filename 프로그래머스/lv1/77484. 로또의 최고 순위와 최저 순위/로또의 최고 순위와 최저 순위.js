@@ -1,10 +1,8 @@
 function solution(lottos, win_nums) {
     let result = [0,0],same=0,cnt=0
-    lottos.forEach((v,i)=>{
-   if(win_nums.includes(v)) 
-    same++
-   if(v==0) cnt++
-   })
+
+same=lottos.filter(v=>win_nums.includes(v)).length
+cnt=lottos.filter(v=>v==0).length
 if(same==2)result[1]=5
 else if(same==3)result[1]=4
 else if(same==4)result[1]=3
