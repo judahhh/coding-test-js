@@ -1,0 +1,45 @@
+function solution(skill, skill_trees) {
+  let answer = 0
+   
+  let filtered=skill_trees.map(v=>{
+   return  v.split('').filter(x=>skill.includes(x))
+  })
+console.log(filtered)
+ filtered.forEach((v,i)=>{
+ let order=true
+  v.forEach((x,j)=>{
+    if(skill[j]!==x){
+     order=false
+    }
+   })
+  if(order==true) answer++
+ })
+
+   
+    return answer;
+}
+
+
+
+
+
+
+
+
+
+/* 방법2
+
+function solution(skill, skill_trees) {
+    let answer = 0;
+
+    const regExp = new RegExp(`[^${skill}]`,"g");
+
+    skill_trees.forEach(function(item) {
+        if( skill.indexOf(item.replace(regExp,'')) === 0 ) 
+            ++answer;
+    })
+
+    return answer;
+}
+
+*/
