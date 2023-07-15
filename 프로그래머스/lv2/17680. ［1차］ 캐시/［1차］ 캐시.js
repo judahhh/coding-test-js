@@ -1,24 +1,28 @@
 function solution(cacheSize, cities) {
-    let answer = 0,cMemory=[];
-    cities=cities.map(v=>v.toLowerCase())
+    let answer = 0 , cacheMemory=[] 
+if(cacheSize===0) return 5*cities.length
 
-    for(const v of cities){
-     if(cMemory.includes(v)){
-       answer+=1
-       cMemory.splice(cMemory.indexOf(v),1)
-     }
-     else answer+=5
-  
-        cMemory.push(v)
-    
+cities.forEach((v,i)=>{
+v=v.toLowerCase()
 
-     if(cacheSize<cMemory.length) {
-       cMemory.shift()
-  
-      }
-    }
+//cache hit일 경우
+  if(cacheMemory.includes(v)) {
+   answer+=1
+   if(cacheMemory.length>=cacheSize) 
+     cacheMemory.splice(cacheMemory.indexOf(v),1)
+cacheMemory.push(v)
+  }
+//cache miss일 경우
+  else{
+   answer+=5
+   if(cacheMemory.length>=cacheSize) 
+     cacheMemory.splice(0,1)
+cacheMemory.push(v)
 
-    
-    
+  }
+})
+
+
+
     return answer
 }
