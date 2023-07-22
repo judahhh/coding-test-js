@@ -25,12 +25,12 @@ function solution(str1, str2) {
 
 function makeStr(array) {
     const arr = [];
-    const regex = /[\W0-9_]/
+   const regex = /^[a-z|A-Z]+$/
     array.split('')
     for(let i = 1 ; i < array.length; i ++) {
         const elem = array[i-1] + array[i];
-        if(regex.test(elem)) continue;
-        arr.push(elem.toLowerCase());
+        if(regex.test(elem))   arr.push(elem.toLowerCase());
+        else continue
     }
     return arr
 }
