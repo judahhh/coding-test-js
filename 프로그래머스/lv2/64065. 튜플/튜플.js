@@ -1,10 +1,20 @@
 function solution(s) {
-   let answer = []
-   let tu=s.slice(2,-2).split("},{").sort((a,b)=>a.length-b.length)
-   tu.forEach(v=>{
-    let str=v.split(",")
-     answer.push(str.find(t=>!answer.includes(t)))
-    })
+ let answer = [],  arr=[]
 
-    return answer.map(v=>Number(v))
+s=s.slice(2,-2)
+
+s.split('},{').forEach((v,i)=>{
+arr.push(v.split(',').map((v)=>Number(v)))
+})
+arr.sort((a,b)=>a.length-b.length)
+
+
+arr.forEach((v,i)=>{
+ v.forEach((x,j)=>{
+  if(!(answer.includes(x))) answer.push(x)
+ })
+})
+
+ return answer
+
 }
