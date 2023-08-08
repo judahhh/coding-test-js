@@ -1,10 +1,9 @@
-function solution(skill, skill_trees) {
+/*function solution(skill, skill_trees) {
   let answer = 0
-   
   let filtered=skill_trees.map(v=>{
    return  v.split('').filter(x=>skill.includes(x))
   })
-console.log(filtered)
+
  filtered.forEach((v,i)=>{
  let order=true
   v.forEach((x,j)=>{
@@ -15,12 +14,11 @@ console.log(filtered)
   if(order==true) answer++
  })
 
-   
     return answer;
 }
 
 
-
+*/
 
 
 
@@ -43,3 +41,29 @@ function solution(skill, skill_trees) {
 }
 
 */
+
+
+
+
+
+
+
+
+
+
+function solution(skill,skill_trees){
+  let index=0, answer=0
+// skill=skill.split('')
+
+skill_trees= skill_trees.map(v=>{
+ return v.split('').filter(x=>skill.includes(x)).join('')
+ })
+
+skill_trees.forEach(v=>{
+ if(skill.includes(v) && skill.indexOf(v)==0) answer++
+
+})
+console.log(skill_trees)
+return answer
+
+}
